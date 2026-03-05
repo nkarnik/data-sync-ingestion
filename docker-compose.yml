@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: datasync
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: datasync_db
+    ports:
+      - "5434:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U datasync -d datasync_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  ingestion-worker:
+    build: ./packages/ingestion-worker
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=datasync
+      - DB_PASSWORD=password
+      - DB_NAME=datasync_db
+      - API_KEY=${API_KEY}
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres_data:

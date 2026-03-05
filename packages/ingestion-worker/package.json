@@ -1,0 +1,19 @@
+{
+  "name": "ingestion-worker",
+  "version": "1.0.0",
+  "description": "DataSync Analytics Ingestion",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "pg": "^8.11.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "@types/pg": "^8.11.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}

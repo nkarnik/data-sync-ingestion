@@ -1,0 +1,14 @@
+CREATE TABLE IF NOT EXISTS events (
+    id VARCHAR(255) PRIMARY KEY,
+    payload JSONB NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS sync_state (
+    id INT PRIMARY KEY DEFAULT 1,
+    next_cursor VARCHAR(255),
+    total_ingested INT DEFAULT 0,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO sync_state (id, next_cursor, total_ingested) VALUES (1, NULL, 0) ON CONFLICT DO NOTHING;
