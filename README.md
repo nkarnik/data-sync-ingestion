@@ -26,4 +26,4 @@
 - **Behavioral implication**: Expired cursors can be “resurrected,” enabling continued pagination without restarting from scratch.
 
 ## AI Tools Used
-- Used Gemini for boilerplate generation, Docker orchestration, and Postgres transaction structuring.
+- Used Gemini and Codex for boilerplate generation, Docker orchestration, and Postgres transaction structuring.
