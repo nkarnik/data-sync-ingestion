@@ -4,16 +4,21 @@
   "description": "DataSync Analytics Ingestion",
   "main": "src/index.ts",
   "scripts": {
-    "start": "ts-node src/index.ts"
+    "start": "ts-node src/index.ts",
+    "test": "vitest run",
+    "test:unit": "vitest run --dir tests/unit",
+    "test:integration": "INTEGRATION_DB=1 vitest run --dir tests/integration"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
-    "pg": "^8.11.3"
+    "pg": "^8.11.3",
+    "prom-client": "^15.1.0"
   },
   "devDependencies": {
     "@types/node": "^20.11.24",
     "@types/pg": "^8.11.2",
     "ts-node": "^10.9.2",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "vitest": "^2.1.4"
   }
 }

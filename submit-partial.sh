@@ -3,9 +3,9 @@
 API_KEY="ds_62864439a8082109a23a58425452f1cd"
 GITHUB_REPO="https://github.com/yourusername/datasync-ingestion"
 
-echo "Dumping 800,000 IDs from PostgreSQL..."
-# Added LIMIT 800000 to the SQL query
-docker-compose exec -T postgres psql -U datasync -d datasync_db -t -A -c "SELECT id FROM events LIMIT 800000;" > event_ids_partial.txt
+echo "Dumping 1,200,000 IDs from PostgreSQL..."
+# Added LIMIT 1,200000 to the SQL query
+docker-compose exec -T postgres psql -U datasync -d datasync_db -t -A -c "SELECT id FROM events LIMIT 1200000;" > event_ids_partial.txt
 
 echo "Total IDs dumped:"
 wc -l event_ids_partial.txt

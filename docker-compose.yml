@@ -27,6 +27,9 @@ services:
       - DB_PASSWORD=password
       - DB_NAME=datasync_db
       - API_KEY=${API_KEY}
+      - METRICS_PORT=9090
+    ports:
+      - "9090:9090"
     depends_on:
       postgres:
         condition: service_healthy
